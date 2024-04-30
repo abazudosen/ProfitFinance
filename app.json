@@ -16,20 +16,45 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.abazudosen.ProfitFinance"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.abazudosen.ProfitFinance"
     },
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 31,
+            "targetSdkVersion": 31,
+            "buildToolsVersion": "31.0.0"
+          },
+          "ios": {
+            "extraPods": [
+              {
+                "name": "simdjson",
+                "configurations": [
+                  "Debug",
+                  "Release"
+                ],
+                "path": "../node_modules/@nozbe/simdjson",
+                "modular_headers": true
+              }
+            ]
+          }
+        }
+      ]
     ]
   }
 }

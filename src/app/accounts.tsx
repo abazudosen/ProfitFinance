@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import React from "react";
 import { useState } from "react";
+import database, { accountsCollection } from "./../db";
 
 const Accounts = () => {
   const [name, setName] = useState("");
@@ -8,17 +9,17 @@ const Accounts = () => {
   const [tap, setTap] = useState("");
 
   const createAccount = async () => {
-    // await database.write(async () => {
-    //   await accountsCollection.create((account) => {
-    //     account.name = name;
-    //     account.cap = Number.parseFloat(cap);
-    //     account.tap = Number.parseFloat(tap);
-    //     account.userId = user?.id;
-    //   });
-    // });
-    // setName('');
-    // setCap('');
-    // setTap('');
+    await database.write(async () => {
+      await accountsCollection.create((account) => {
+        account.name = name;
+        account.cap = Number.parseFloat(cap);
+        account.tap = Number.parseFloat(tap);
+        // account.userId = user?.id;
+      });
+    });
+    setName("");
+    setCap("");
+    setTap("");
   };
 
   return (
