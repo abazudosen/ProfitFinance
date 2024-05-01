@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import React from "react";
 import { useState } from "react";
-import database, { accountsCollection } from "./../db";
-import AccountsList from "../components/AccountsList";
+import database, { accountsCollection } from "../../db";
+import AccountsList from "../../components/AccountsList";
 
 const Accounts = () => {
   const [name, setName] = useState("");

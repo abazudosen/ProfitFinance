@@ -6,8 +6,8 @@ import database, {
   accountAllocationCollection,
   accountsCollection,
   allocationsCollection,
-} from "../../db";
-import Account from "../../model/Account";
+} from "../../../db";
+import Account from "../../../model/Account";
 
 function NewAllocation({ accounts }: { accounts: Account[] }) {
   const [income, setIncome] = useState("0");

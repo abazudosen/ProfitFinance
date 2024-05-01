@@ -2,8 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { Link, Stack } from "expo-router";
 import { StyleSheet, Button, Text, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { accountsCollection } from "../../db";
-import AllocationsList from "../../components/AllocationsList";
+import { accountsCollection } from "../../../db";
+import AllocationsList from "../../../components/AllocationsList";
 
 export default function HomeScreen() {
   const test = async () => {};
