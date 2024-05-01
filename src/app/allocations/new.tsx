@@ -1,13 +1,26 @@
 import { Stack, router } from "expo-router";
 import { useState } from "react";
+import { withObservables } from "@nozbe/watermelondb/react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import database, { accountsCollection, allocationsCollection } from "../../db";
+import Account from "../../model/Account";
 
-function NewAllocation() {
+function NewAllocation({ accounts }: { accounts: Account[] }) {
   const [income, setIncome] = useState("0");
 
   // const { user } = useAuth();
 
-  const save = async () => {};
+  const save = async () => {
+    await database.write(async () => {
+      const allocation = await allocationsCollection.create((newAllocation) => {
+        newAllocation.income = Number.parseFloat(income);
+        // newAllocation.userId = user?.id;
+      });
+    });
+
+    setIncome("");
+    router.back();
+  };
 
   return (
     <View style={styles.container}>
@@ -23,21 +36,25 @@ function NewAllocation() {
         />
       </View>
 
-      {/* {accounts.map((account) => (
+      {accounts.map((account) => (
         <View key={account.id} style={styles.inputRow}>
           <Text style={{ flex: 1 }}>
             {account.name}: {account.cap}%
           </Text>
           <Text>${(Number.parseFloat(income) * account.cap) / 100}</Text>
         </View>
-      ))} */}
+      ))}
 
       <Button title="Save" onPress={save} />
     </View>
   );
 }
 
-export default NewAllocation;
+const enhance = withObservables([], () => ({
+  accounts: accountsCollection.query(),
+}));
+
+export default enhance(NewAllocation);
 
 const styles = StyleSheet.create({
   container: {

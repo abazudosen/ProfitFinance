@@ -5,12 +5,13 @@ import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
 import schema from "./schema";
 import migrations from "./migrations";
 import Account from "../model/Account"; // ⬅️ You'll import your Models here
+import Allocation from "../model/Allocation";
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({
   schema,
   // (You might want to comment it out for development purposes -- see Migrations documentation)
-  migrations,
+  // migrations,
   // (optional database name or file system path)
   // dbName: 'myapp',
   // (recommended option, should work flawlessly out of the box on iOS. On Android,
@@ -27,13 +28,14 @@ const database = new Database({
   adapter,
   modelClasses: [
     Account, // ⬅️ You'll add Models to Watermelon here
+    Allocation
   ],
 });
 
 export default database;
 
-export const accountsCollection = database.get<Account>('accounts');
-// export const allocationsCollection = database.get<Allocation>('allocations');
+export const accountsCollection = database.get<Account>("accounts");
+export const allocationsCollection = database.get<Allocation>("allocations");
 // export const accountAllocationCollection = database.get<AccountAllocation>(
 //   'account_allocations'
 // );

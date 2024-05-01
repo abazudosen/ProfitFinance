@@ -3,12 +3,10 @@ import { Link, Stack } from "expo-router";
 import { StyleSheet, Button, Text, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { accountsCollection } from "../../db";
+import AllocationsList from "../../components/AllocationsList";
 
 export default function HomeScreen() {
-  const test = async () => {
-    const account = await accountsCollection.query().fetch();
-    console.log(account);
-  };
+  const test = async () => {};
 
   return (
     <View style={styles.container}>
@@ -25,11 +23,12 @@ export default function HomeScreen() {
           ),
         }}
       />
-      <Button title="Test" onPress={test} />
 
       <Link href="/allocations/new" asChild>
         <Text style={styles.button}>New Allocation</Text>
       </Link>
+
+      <AllocationsList />
       <StatusBar style="auto" />
     </View>
   );
