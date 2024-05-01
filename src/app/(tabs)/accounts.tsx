@@ -3,11 +3,14 @@ import React from "react";
 import { useState } from "react";
 import database, { accountsCollection } from "../../db";
 import AccountsList from "../../components/AccountsList";
+import { useAuth } from "../../providers/AuthProviders";
 
 const Accounts = () => {
   const [name, setName] = useState("");
   const [cap, setCap] = useState("");
   const [tap, setTap] = useState("");
+
+  const { user } = useAuth();
 
   const createAccount = async () => {
     await database.write(async () => {
@@ -15,7 +18,7 @@ const Accounts = () => {
         account.name = name;
         account.cap = Number.parseFloat(cap);
         account.tap = Number.parseFloat(tap);
-        // account.userId = user?.id;
+        account.userId = user?.id;
       });
     });
     setName("");

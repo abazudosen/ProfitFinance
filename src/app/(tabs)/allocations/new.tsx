@@ -8,17 +8,18 @@ import database, {
   allocationsCollection,
 } from "../../../db";
 import Account from "../../../model/Account";
+import { useAuth } from "../../../providers/AuthProviders";
 
 function NewAllocation({ accounts }: { accounts: Account[] }) {
   const [income, setIncome] = useState("0");
 
-  // const { user } = useAuth();
+  const { user } = useAuth();
 
   const save = async () => {
     await database.write(async () => {
       const allocation = await allocationsCollection.create((newAllocation) => {
         newAllocation.income = Number.parseFloat(income);
-        // newAllocation.userId = user?.id;
+        newAllocation.userId = user?.id;
       });
       await Promise.all(
         accounts.map((account) =>
@@ -27,7 +28,7 @@ function NewAllocation({ accounts }: { accounts: Account[] }) {
             item.allocation.set(allocation);
             item.cap = account.cap;
             item.amount = (allocation.income * account.cap) / 100;
-            // item.userId = user?.id;
+            item.userId = user?.id;
           })
         )
       );
