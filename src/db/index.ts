@@ -6,6 +6,7 @@ import schema from "./schema";
 import migrations from "./migrations";
 import Account from "../model/Account"; // ⬅️ You'll import your Models here
 import Allocation from "../model/Allocation";
+import AccountAllocation from "../model/AccountAllocation";
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({
@@ -28,7 +29,8 @@ const database = new Database({
   adapter,
   modelClasses: [
     Account, // ⬅️ You'll add Models to Watermelon here
-    Allocation
+    Allocation,
+    AccountAllocation
   ],
 });
 
@@ -36,6 +38,6 @@ export default database;
 
 export const accountsCollection = database.get<Account>("accounts");
 export const allocationsCollection = database.get<Allocation>("allocations");
-// export const accountAllocationCollection = database.get<AccountAllocation>(
-//   'account_allocations'
-// );
+export const accountAllocationCollection = database.get<AccountAllocation>(
+  'account_allocations'
+);

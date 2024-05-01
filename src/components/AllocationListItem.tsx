@@ -20,11 +20,11 @@ const AllocationListItem = ({
         <Text style={styles.income}>${allocation.income}</Text>
       </View>
 
-      {/* <View style={{ gap: 5, paddingVertical: 5 }}>
+      <View style={{ gap: 5, paddingVertical: 5 }}>
         {accountAllocations.map((item) => (
           <AccountAllocationItem accountAllocation={item} />
         ))}
-      </View> */}
+      </View>
     </View>
   );
 };
@@ -33,7 +33,7 @@ const enhance = withObservables(
   ["allocation"],
   ({ allocation }: { allocation: Allocation }) => ({
     allocation,
-    // accountAllocations: allocation.accountAllocations,
+    accountAllocations: allocation.accountAllocations,
   })
 );
 

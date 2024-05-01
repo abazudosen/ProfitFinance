@@ -2,7 +2,11 @@ import { Stack, router } from "expo-router";
 import { useState } from "react";
 import { withObservables } from "@nozbe/watermelondb/react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import database, { accountsCollection, allocationsCollection } from "../../db";
+import database, {
+  accountAllocationCollection,
+  accountsCollection,
+  allocationsCollection,
+} from "../../db";
 import Account from "../../model/Account";
 
 function NewAllocation({ accounts }: { accounts: Account[] }) {
@@ -16,6 +20,17 @@ function NewAllocation({ accounts }: { accounts: Account[] }) {
         newAllocation.income = Number.parseFloat(income);
         // newAllocation.userId = user?.id;
       });
+      await Promise.all(
+        accounts.map((account) =>
+          accountAllocationCollection.create((item) => {
+            item.account.set(account);
+            item.allocation.set(allocation);
+            item.cap = account.cap;
+            item.amount = (allocation.income * account.cap) / 100;
+            // item.userId = user?.id;
+          })
+        )
+      );
     });
 
     setIncome("");
