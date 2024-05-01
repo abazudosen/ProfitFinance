@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import React from "react";
 import { useState } from "react";
 import database, { accountsCollection } from "./../db";
+import AccountsList from "../components/AccountsList";
 
 const Accounts = () => {
   const [name, setName] = useState("");
@@ -30,7 +31,7 @@ const Accounts = () => {
         <Text>TAP</Text>
       </View>
 
-      {/* <AccountsList /> */}
+      <AccountsList />
 
       <View style={styles.inputRow}>
         <TextInput

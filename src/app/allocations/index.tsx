@@ -2,9 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import { Link, Stack } from "expo-router";
 import { StyleSheet, Button, Text, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { accountsCollection } from "../../db";
 
 export default function HomeScreen() {
-  const test = async () => {};
+  const test = async () => {
+    const account = await accountsCollection.query().fetch();
+    console.log(account);
+  };
 
   return (
     <View style={styles.container}>
