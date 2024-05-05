@@ -4,6 +4,7 @@ import { StyleSheet, Button, Text, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { accountsCollection } from "../../../db";
 import AllocationsList from "../../../components/AllocationsList";
+import { mySync } from "../../../db/sync";
 
 export default function HomeScreen() {
   const test = async () => {};
@@ -18,7 +19,7 @@ export default function HomeScreen() {
               name="refresh-cw"
               size={20}
               color="green"
-              // onPress={mySync}
+              onPress={mySync}
             />
           ),
         }}

@@ -1,12 +1,14 @@
 import { Platform } from "react-native";
 import { Database } from "@nozbe/watermelondb";
 import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
-
 import schema from "./schema";
 import migrations from "./migrations";
 import Account from "../model/Account"; // ⬅️ You'll import your Models here
 import Allocation from "../model/Allocation";
 import AccountAllocation from "../model/AccountAllocation";
+import * as Crypto from 'expo-crypto';
+import { setGenerator } from '@nozbe/watermelondb/utils/common/randomId';
+setGenerator(() => Crypto.randomUUID());
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({
