@@ -11,6 +11,31 @@ Welcome to the Profile First Finance App! This mobile application helps users ma
 - **Offline Support**: Watermelon DB enables offline-first functionality, allowing users to access and modify their financial data even without an internet connection.
 - **Encryption**: Expo Crypto is used to encrypt sensitive user data, such as account credentials and transaction details, for enhanced security.
 
+### Screenshots
+
+<div style="display: flex; flex-direction: 'row';">
+<img src="./screenshots/1.png" width=20%>
+<img src="./screenshots/2.png" width=20%>
+<img src="./screenshots/3.png" width=20%>
+<img src="./screenshots/4.png" width=20%>
+</div>
+
+## Configuration
+
+- SUPABASE_URL=your_supabase_url
+- SUPABASE_ANON_KEY=your_supabase_anon_key
+
+## Dependencies:
+
+- [Expo Router](https://docs.expo.dev/routing/introduction/) file-based navigation and API Routes
+
+- [Supabase](https://supabase.com) an open-source alternative to Firebase. It provides a set of tools and services for building real-time applications with PostgreSQL. Supabase offers features like authentication, real-time database, and file storage, all accessible through a simple API.
+
+- [Watermelon DB](https://watermelondb.dev/docs/Installation) Watermelon DB is a reactive database for React and React Native applications. It is built on top of SQLite and provides an easy-to-use, schema-based API for managing application data. Watermelon DB is designed for offline-first applications and offers features like automatic syncing and conflict resolution.
+
+- [Expo Crypto](https://docs.expo.dev/versions/latest/sdk/crypto/) a module in the Expo SDK that provides cryptographic functions for React Native applications. It allows developers to perform cryptographic operations like hashing, encryption, and decryption using native code.
+
+
 ## Installation
 
 1. Clone the repository:
@@ -19,30 +44,10 @@ Welcome to the Profile First Finance App! This mobile application helps users ma
 git clone https://github.com/abazudosen/ProfitFinance
 
 
-2. Configuration
+2. cd profile-first-finance-app
 
-- SUPABASE_URL=your_supabase_url
-- SUPABASE_ANON_KEY=your_supabase_anon_key
+3. npm install
 
+4. npm start
 
-
-
-2. Dependencies:
-
-- [Expo Router](https://docs.expo.dev/routing/introduction/) file-based navigation and API Routes
-
-- [Supabase](https://supabase.com) an open-source alternative to Firebase. It provides a set of tools and services for building real-time applications with PostgreSQL. Supabase offers features like authentication, real-time database, and file storage, all accessible through a simple API.
-
-- [Watermelon DB](https://watermelondb.dev/docs/Installation) Watermelon DB is a reactive database for React and React Native applications. It is built on top of SQLite and provides an easy-to-use, schema-based API for managing application data. Watermelon DB is designed for offline-first applications and offers features like automatic syncing and conflict resolution.
-
-- [Expo Crypto](https://docs.expo.dev/versions/latest/sdk/crypto/)  a module in the Expo SDK that provides cryptographic functions for React Native applications. It allows developers to perform cryptographic operations like hashing, encryption, and decryption using native code.
-
-3. Screenshots
-
-<div style="display: flex; flex-direction: 'row';">
-<img src="./screenshots/1.png" width=20%>
-<img src="./screenshots/2.png" width=20%>
-<img src="./screenshots/3.png" width=20%>
-<img src="./screenshots/4.png" width=20%>
-</div>
 ```
